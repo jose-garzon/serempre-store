@@ -2,8 +2,8 @@
 import styled from 'styled-components'
 
 // ------------------------------ import variables
-import { colors, spacing, shadows } from '@globalStyles/Variables'
-import { media } from '@globalStyles/mediaQeries'
+import { colors, spacing, shadows } from '../../globalStyles/Variables'
+import { media } from '../../globalStyles/mediaQeries'
 
 // ------------------------------------ COMPONENTS ------------------------------------//
 export const StyledButton = styled.button`
@@ -17,6 +17,7 @@ export const StyledButton = styled.button`
   background-color: ${colors.main};
   outline: none;
   transition: 0.2s;
+  cursor: pointer;
 
   &:hover {
     background-color: ${colors.mainLight};

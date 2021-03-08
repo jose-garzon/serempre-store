@@ -4,7 +4,6 @@ import React from 'react'
 // ------------------------------ import styles and images
 import { SyledSection } from './styles'
 // ------------------------------------ COMPONENT ------------------------------------//
-// description of the component.
 export const FooterDescriptions = props => {
   const { title, description } = props
   return (

@@ -2,14 +2,15 @@
 import React from 'react'
 
 // ------------------------------ import styles and images
-import { StyledHeader } from './styles'
-import Logo from '../../assets/images/logo.png'
+import { StyledSpecs } from './styles'
 
 // ------------------------------------ COMPONENT ------------------------------------//
-export const Header = () => {
+export const ItemSpecs = props => {
+  const { title, description } = props
   return (
-    <StyledHeader>
-      <img src={Logo} alt='logo de Serempre' />
-    </StyledHeader>
+    <StyledSpecs>
+      <h5>{title}</h5>
+      <p>{description}</p>
+    </StyledSpecs>
   )
 }

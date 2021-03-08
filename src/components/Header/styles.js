@@ -2,8 +2,8 @@
 import styled from 'styled-components'
 
 // ------------------------------ import variables
-import { spacing } from '@globalStyles/Variables'
-import { media } from '@globalStyles/mediaQeries'
+import { spacing } from '../../globalStyles/Variables'
+import { media } from '../../globalStyles/mediaQeries'
 
 // ------------------------------------ COMPONENTS ------------------------------------//
 export const StyledHeader = styled.header`
@@ -13,10 +13,18 @@ export const StyledHeader = styled.header`
   text-align: center;
 
   img {
-    width: 60px;
+    width: 50px;
   }
 
   ${media.tablet} {
     margin: 0 ${spacing.space4};
+  }
+
+  ${media.desktop} {
+    position: fixed;
+    background-color: white;
+    left: 0;
+    right: 0;
+    top: 0;
   }
 `

@@ -2,14 +2,13 @@
 import React from 'react'
 
 // ------------------------------ import components
-import { Button } from '@atomComponents/Button'
-import { FooterDescriptions } from '@atomComponents/FooterDescriptions'
+import { Button } from '../../atomComponents/Button'
+import { FooterDescriptions } from '../../atomComponents/FooterDescriptions'
 
 // ------------------------------ import styles and images
 import { StyledFooter, StyleFooterDescription, StyleFooterTotal } from './style'
 
 // ------------------------------------ COMPONENT ------------------------------------//
-// description of the component.
 export const Footer = () => {
   return (
     <StyledFooter>

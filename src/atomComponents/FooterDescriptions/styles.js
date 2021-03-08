@@ -2,8 +2,8 @@
 import styled from 'styled-components'
 
 // ------------------------------ import variables
-import { spacing } from '@globalStyles/Variables'
-import { media } from '@globalStyles/mediaQeries'
+import { spacing } from '../../globalStyles/Variables'
+import { media } from '../../globalStyles/mediaQeries'
 
 // ------------------------------------ COMPONENTS ------------------------------------//
 export const SyledSection = styled.section`
@@ -14,7 +14,6 @@ export const SyledSection = styled.section`
     display: none;
     ${media.desktop} {
       display: block;
-      font-weight: bold;
     }
   }
 `

@@ -2,8 +2,8 @@
 import styled from 'styled-components'
 
 // ------------------------------ import variables
-import { colors, spacing } from '@globalStyles/Variables'
-import { media } from '@globalStyles/mediaQeries'
+import { colors, spacing } from '../../globalStyles/Variables'
+import { media } from '../../globalStyles/mediaQeries'
 
 // ------------------------------------ COMPONENTS ------------------------------------//
 export const StyledFooter = styled.footer`
@@ -17,6 +17,10 @@ export const StyledFooter = styled.footer`
     padding: ${spacing.space2} ${spacing.space4};
   }
   ${media.desktop} {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
     padding: ${spacing.space3} ${spacing.space4};
   }
 `
