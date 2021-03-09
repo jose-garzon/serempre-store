@@ -64,10 +64,14 @@ export const StyledNav = styled.ul`
 
   & + p {
     color: ${colors.grayDark};
+    margin-bottom: ${spacing.space3};
   }
 
   ${media.tablet} {
     justify-content: flex-start;
+    & + p {
+      margin-bottom: 0;
+    }
   }
 `
 

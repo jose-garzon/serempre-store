@@ -18,6 +18,9 @@ import {
 } from './styles'
 import { Card } from '../../atomComponents/Card'
 import { ItemSpecs } from '../../atomComponents/ItemSpecs'
+import { StyledGalleryIcons } from '../../components/Gallery/styles'
+import { GalleryIcon } from '../../atomComponents/GalleryIcon'
+import { useGallery } from '../../components/Gallery/hook'
 
 // ------------------------------------ COMPONENT ------------------------------------//
 export const ProductDetail = () => {
@@ -33,6 +36,8 @@ export const ProductDetail = () => {
     box,
     scrollToSection
   } = useProductDetail()
+  const { icons } = useGallery()
+
   return (
     <StyledContainer>
       <Gallery />
@@ -49,21 +54,21 @@ export const ProductDetail = () => {
 
         <section ref={overview}>
           <StyledNav>
-            {nav.map(({ id, label, selected }) => (
+            {nav.map(nav => (
               <StyledLi
                 tabIndex='0'
-                selected={selected}
+                selected={nav.selected}
                 onKeyDown={e => {
-                  onEnter(e, id, 'nav')
-                  scrollToSection(label)
+                  onEnter(e, nav, 'nav')
+                  scrollToSection(nav.label)
                 }}
                 onClick={() => {
-                  selectItems(id, 'nav')
-                  scrollToSection(label)
+                  selectItems(nav, 'nav')
+                  scrollToSection(nav.label)
                 }}
-                key={id}
+                key={nav.id}
               >
-                <p>{label}</p>
+                <p>{nav.label}</p>
               </StyledLi>
             ))}
           </StyledNav>
@@ -79,13 +84,19 @@ export const ProductDetail = () => {
           </p>
         </section>
 
+        <StyledGalleryIcons onMobile>
+          {icons.map(icon => (
+            <GalleryIcon key={icon.id} {...icon} />
+          ))}
+        </StyledGalleryIcons>
+
         <section ref={feature}>
           <h3>Choose your finish.</h3>
           <StyledFinishes>
             {finish.map(fin => (
               <Card
-                onClick={() => selectItems(fin.id, 'finish')}
-                onKeyDown={e => onEnter(e, fin.id, 'finish')}
+                onClick={() => selectItems(fin, 'finish')}
+                onKeyDown={e => onEnter(e, fin, 'finish')}
                 key={fin.id}
                 {...fin}
               />
@@ -94,8 +105,8 @@ export const ProductDetail = () => {
           <h3>Would you like to add extended warranty coverage?</h3>
           {warranty.map(warr => (
             <Card
-              onClick={() => selectItems(warr.id, 'warranty')}
-              onKeyDown={e => onEnter(e, warr.id, 'warranty')}
+              onClick={() => selectItems(warr, 'warranty')}
+              onKeyDown={e => onEnter(e, warr, 'warranty')}
               key={warr.id}
               {...warr}
             />
@@ -103,8 +114,8 @@ export const ProductDetail = () => {
           <h3>Features.</h3>
           {features.map(feat => (
             <Card
-              onClick={() => selectItems(feat.id, 'features')}
-              onKeyDown={e => onEnter(e, feat.id, 'features')}
+              onClick={() => selectItems(feat, 'features')}
+              onKeyDown={e => onEnter(e, feat, 'features')}
               key={feat.id}
               {...feat}
             />

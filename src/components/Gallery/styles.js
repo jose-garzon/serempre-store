@@ -1,5 +1,5 @@
 // ------------------------------ import libraries
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // ------------------------------ import variables
 import { media } from '../../globalStyles/mediaQeries'
@@ -8,6 +8,10 @@ import { media } from '../../globalStyles/mediaQeries'
 export const StyledGalleryContainer = styled.div`
   width: 100%;
   margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   ${media.desktop} {
     position: fixed;
     width: calc(50% - 100px);
@@ -31,9 +35,19 @@ export const StyledGalleryIcons = styled.div`
   display: none;
 
   ${media.tablet} {
-    margin-top: 70px;
+    margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
+
+  ${props =>
+    props.onMobile &&
+    css`
+      display: flex;
+      flex-direction: column;
+      ${media.tablet} {
+        display: none;
+      }
+    `}
 `

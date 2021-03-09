@@ -6,12 +6,7 @@ import { media } from './mediaQeries'
 import { fonts, colors } from './Variables'
 
 export const GlobalStyle = createGlobalStyle`
-@font-face {
-      font-family: "Circular";
-      src: url('../assets/fonts/Circular-Std-Medium.otf') format('otf');
-      font-weight: 400;
-      font-style: normal;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 * {
   margin: 0;
@@ -21,11 +16,10 @@ export const GlobalStyle = createGlobalStyle`
 
 html{
   font-size: 62.5%;
-  font-family: circular;
 }
 
 body {
-  font-family: 'Circular';
+  font-family: 'Poppins', sans-serif;
   font-size: ${fonts.p};
 }
 

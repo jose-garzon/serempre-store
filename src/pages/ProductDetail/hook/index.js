@@ -1,8 +1,10 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useContext } from 'react'
 
+import { TotalContext } from '../../../context'
 import { selectItem } from '../../../utils/select'
 
 export const useProductDetail = () => {
+  const { addToCart } = useContext(TotalContext)
   const overview = useRef(null)
   const feature = useRef(null)
   const box = useRef(null)
@@ -15,6 +17,7 @@ export const useProductDetail = () => {
   const [finish, setFinish] = useState([
     {
       id: 1,
+      type: 'finish',
       title: 'Ivory White',
       description:
         'For the past 75 years, Sennheiser has put sound first. The new MOMENTUM True.',
@@ -23,6 +26,7 @@ export const useProductDetail = () => {
     },
     {
       id: 2,
+      type: 'finish',
       title: 'Matte Black',
       description:
         'Of all of the celestial bodies that capture our attention and fascination as astronomers.',
@@ -33,6 +37,7 @@ export const useProductDetail = () => {
   const [warranty, setWarranty] = useState([
     {
       id: 1,
+      type: 'warranty',
       title: '2 years coverage',
       description: 'For the past 75 years, Sennheiser has put sound first.',
       price: 0,
@@ -40,6 +45,7 @@ export const useProductDetail = () => {
     },
     {
       id: 2,
+      type: 'warranty',
       title: '3 years coverage',
       description: 'For the past 75 years, Sennheiser has put sound first.',
       price: 75,
@@ -49,6 +55,7 @@ export const useProductDetail = () => {
   const [features, setfeatures] = useState([
     {
       id: 1,
+      type: 'features',
       title: 'Voice Assistant support',
       description: '',
       price: 0,
@@ -56,6 +63,7 @@ export const useProductDetail = () => {
     },
     {
       id: 2,
+      type: 'features',
       title: 'Customizable controls',
       description: '',
       price: 25,
@@ -63,15 +71,20 @@ export const useProductDetail = () => {
     }
   ])
 
-  const selectItems = (id, section) => {
-    if (section === 'finish') selectItem(id, finish, setFinish)
-    if (section === 'warranty') selectItem(id, warranty, setWarranty)
-    if (section === 'features') selectItem(id, features, setfeatures)
-    if (section === 'nav') selectItem(id, nav, setNav)
+  const selectItems = (obj, section) => {
+    if (section === 'finish') selectItem(obj.id, finish, setFinish)
+    if (section === 'warranty') selectItem(obj.id, warranty, setWarranty)
+    if (section === 'features') selectItem(obj.id, features, setfeatures)
+    if (section === 'nav') selectItem(obj.id, nav, setNav)
+
+    if (section !== 'nav') addToCart(obj)
   }
 
-  const onEnter = ({ key }, id, section) => {
-    if (key === 'Enter') selectItems(id, section)
+  const onEnter = ({ key }, obj, section) => {
+    if (key === 'Enter') {
+      selectItems(obj.id, section)
+      addToCart(obj)
+    }
   }
 
   const scrollToSection = section => {
